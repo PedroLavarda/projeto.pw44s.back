@@ -15,7 +15,7 @@ import lombok.Setter;
 @Table(name = "tb_products")
 public class Product {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @NotNull
@@ -32,6 +32,4 @@ public class Product {
     @ManyToOne
     @JoinColumn(name = "idcategory", referencedColumnName = "id")
     private Category category;
-
-
 }

@@ -6,7 +6,7 @@ import jakarta.validation.constraints.Size;
 import lombok.*;
 
 @Entity
-@Table(name = "tb_categoris")
+@Table(name = "tb_categories")
 @Getter
 @Setter
 @AllArgsConstructor
