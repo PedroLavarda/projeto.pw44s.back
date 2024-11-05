@@ -1,4 +1,6 @@
 package br.edu.projeto.server.service;
 
-public interface IOrderProductsService {
+import br.edu.projeto.server.model.OrderProducts;
+
+public interface IOrderProductsService extends ICrudService<OrderProducts, Long>{
 }
