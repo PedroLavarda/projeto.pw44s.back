@@ -26,7 +26,6 @@ public class Product {
     @Size(min = 10, max = 100)
     private String description;
 
-
     private Double price;
 
     @ManyToOne
