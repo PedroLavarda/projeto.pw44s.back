@@ -24,4 +24,9 @@ public class Order {
     @ManyToOne
     @JoinColumn(name = "iduser", referencedColumnName = "id")
     private User user;
+
+    @ManyToOne
+    @JoinColumn(name = "idadress", referencedColumnName = "id")
+    private Address address;
 }
+

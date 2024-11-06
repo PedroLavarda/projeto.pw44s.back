@@ -1,5 +1,6 @@
 package br.edu.projeto.server.dto;
 
+import br.edu.projeto.server.model.User;
 import lombok.Data;
 
 @Data
@@ -11,4 +12,6 @@ public class AddressDTO {
     private String state;
     private String cep;
     private String country;
+
+    private User user;
 }

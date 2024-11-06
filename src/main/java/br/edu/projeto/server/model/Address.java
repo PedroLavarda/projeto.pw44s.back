@@ -21,4 +21,8 @@ public class Address {
     private String state;
     private String cep;
     private String country;
+
+    @ManyToOne
+    @JoinColumn(name = "iduser", referencedColumnName = "id")
+    private User user;
 }

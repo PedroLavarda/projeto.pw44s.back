@@ -20,12 +20,15 @@ public class Product {
 
     @NotNull
     @Size(min = 2, max = 50)
+    @Column
     private String name;
 
     @NotNull
     @Size(min = 10, max = 100)
+    @Column
     private String description;
 
+    @Column
     private Double price;
 
     @ManyToOne

@@ -1,5 +1,6 @@
 package br.edu.projeto.server.dto;
 
+import br.edu.projeto.server.model.Address;
 import br.edu.projeto.server.model.User;
 import lombok.Data;
 
@@ -11,4 +12,6 @@ public class OrderDTO {
 
     private Date date;
     private User user;
+
+    private Address address;
 }

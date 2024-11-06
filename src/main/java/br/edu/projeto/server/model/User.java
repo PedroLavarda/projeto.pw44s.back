@@ -18,15 +18,24 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(length = 50, nullable = false, name = "full_name")
     private String fullName;
-    private String cpf;
-    private String rg;
-    private Date birthDate;
-    private String password;
-    private String email;
-    private String phone;
 
-    @ManyToOne
-    @JoinColumn(name = "idadress", referencedColumnName = "id")
-    private Address address;
+    @Column(length = 50, nullable = false)
+    private String cpf;
+
+    @Column(length = 50, nullable = false)
+    private String rg;
+
+    @Column(length = 50, nullable = false)
+    private Date birthDate;
+
+    @Column(length = 50, nullable = false)
+    private String password;
+
+    @Column(length = 50, nullable = false)
+    private String email;
+
+    @Column(length = 50, nullable = false)
+    private String phone;
 }
