@@ -35,7 +35,7 @@ public abstract class CrudController <T, D, ID extends Serializable> {
         return getModelMapper().map(entityDto, this.typeClass);
     }
 
-    @GetMapping //http://ip.api:port/classname
+    @GetMapping
     public ResponseEntity<List<D>> findAll() {
         return ResponseEntity.ok(
                 getService().findAll().stream().map(
@@ -44,7 +44,7 @@ public abstract class CrudController <T, D, ID extends Serializable> {
         );
     }
 
-    @GetMapping("page")  //http://ip.api:port/classname/page
+    @GetMapping("page")
     public ResponseEntity<Page<D>> findAll(
             @RequestParam int page,
             @RequestParam int size,

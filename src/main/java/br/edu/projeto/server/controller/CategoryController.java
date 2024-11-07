@@ -30,6 +30,4 @@ public class CategoryController extends CrudController<Category, CategoryDTO, Lo
     protected ModelMapper getModelMapper() {
         return this.modelMapper;
     }
-
-
 }
