@@ -14,8 +14,7 @@ public class ProductController extends CrudController<Product, ProductDTO, Long>
     private final IProductService productService;
     private final ModelMapper modelMapper;
 
-    public ProductController(IProductService productService,
-                             ModelMapper modelMapper) {
+    public ProductController(IProductService productService, ModelMapper modelMapper) {
         super(Product.class, ProductDTO.class);
         this.productService = productService;
         this.modelMapper = modelMapper;

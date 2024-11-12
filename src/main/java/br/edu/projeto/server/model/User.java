@@ -1,25 +1,32 @@
 package br.edu.projeto.server.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.AuthorityUtils;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import java.sql.Date;
+import java.util.Collection;
 
-@NoArgsConstructor
-@AllArgsConstructor
-@Getter @Setter
 @Entity
 @Table(name = "tb_users")
-public class User {
+@Getter @Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(length = 50, nullable = false, name = "full_name")
-    private String fullName;
+    @Getter
+    @Column(length = 50, nullable = false, name = "username")
+    private String username;
+
+    @Getter
+    @Column(length = 50, nullable = false, name = "display_name")
+    private String displayName;
 
     @Column(length = 50, nullable = false)
     private String cpf;
@@ -27,10 +34,10 @@ public class User {
     @Column(length = 50, nullable = false)
     private String rg;
 
-    @Column(length = 50, nullable = false)
+    @Column(length = 50, nullable = false, name = "birth_date")
     private Date birthDate;
 
-    @Column(length = 50, nullable = false)
+    @Column(length = 100, nullable = false)
     private String password;
 
     @Column(length = 50, nullable = false)
@@ -38,4 +45,10 @@ public class User {
 
     @Column(length = 50, nullable = false)
     private String phone;
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return AuthorityUtils.createAuthorityList("ROLE_USER");
+    }
+
 }
