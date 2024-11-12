@@ -14,8 +14,7 @@ public class UserController extends CrudController<User, UserDTO, Long>  {
     private final IUserService userService;
     private final ModelMapper modelMapper;
 
-    public UserController(IUserService userService,
-                                   ModelMapper modelMapper) {
+    public UserController(IUserService userService, ModelMapper modelMapper) {
         super(User.class, UserDTO.class);
         this.userService = userService;
         this.modelMapper = modelMapper;

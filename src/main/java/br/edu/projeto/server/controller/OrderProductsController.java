@@ -14,8 +14,7 @@ public class OrderProductsController extends CrudController<OrderProducts, Order
     private final IOrderProductsService orderProductsService;
     private final ModelMapper modelMapper;
 
-    public OrderProductsController(IOrderProductsService orderProductsService,
-                             ModelMapper modelMapper) {
+    public OrderProductsController(IOrderProductsService orderProductsService, ModelMapper modelMapper) {
         super(OrderProducts.class, OrderProductsDTO.class);
         this.orderProductsService = orderProductsService;
         this.modelMapper = modelMapper;

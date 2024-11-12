@@ -14,8 +14,7 @@ public class CategoryController extends CrudController<Category, CategoryDTO, Lo
     private final ICategoryService categoryService;
     private final ModelMapper modelMapper;
 
-    public CategoryController(ICategoryService categoryService,
-                              ModelMapper modelMapper) {
+    public CategoryController(ICategoryService categoryService, ModelMapper modelMapper) {
         super(Category.class, CategoryDTO.class);
         this.categoryService = categoryService;
         this.modelMapper = modelMapper;

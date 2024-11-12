@@ -11,8 +11,7 @@ import org.springframework.stereotype.Component;
 import java.io.IOException;
 
 @Component("authenticationEntryPoint")
-public class EntryPointUnauthorizedHandler
-        implements AuthenticationEntryPoint {
+public class EntryPointUnauthorizedHandler implements AuthenticationEntryPoint {
 
     @Override
     public void commence(HttpServletRequest request,
