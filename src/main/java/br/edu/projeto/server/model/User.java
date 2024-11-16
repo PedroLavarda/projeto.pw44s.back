@@ -1,7 +1,12 @@
 package br.edu.projeto.server.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
 import lombok.*;
+import org.hibernate.validator.constraints.UniqueElements;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -21,34 +26,42 @@ public class User implements UserDetails {
     private Long id;
 
     @Getter
-    @Column(length = 50, nullable = false, name = "username")
+    @NotNull
+    @Size(min = 10, max = 50)
+    @Column(name = "username")
     private String username;
 
     @Getter
-    @Column(length = 50, nullable = false, name = "display_name")
+    @NotNull
+    @Size(min = 6, max = 20)
     private String displayName;
 
-    @Column(length = 50, nullable = false)
+    @NotNull
+    @Size(min = 11, max = 11)
     private String cpf;
 
-    @Column(length = 50, nullable = false)
+    @NotNull
+    @Size(min = 9, max = 9)
     private String rg;
 
-    @Column(length = 50, nullable = false, name = "birth_date")
+    @NotNull
+    @Column(name = "birth_date")
     private Date birthDate;
 
-    @Column(length = 100, nullable = false)
+    @NotNull
+    @Size(min = 6)
+    @Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).*$")
     private String password;
 
-    @Column(length = 50, nullable = false)
+    @NotNull
+    @Email(regexp = ".+[@].+[\\.].+")
     private String email;
 
-    @Column(length = 50, nullable = false)
+    @Column(length = 50)
     private String phone;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return AuthorityUtils.createAuthorityList("ROLE_USER");
     }
-
 }

@@ -1,6 +1,8 @@
 package br.edu.projeto.server.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -16,10 +18,23 @@ public class Address {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotNull
+    @Size(min = 10, max = 100)
     private String street;
+
+    @NotNull
+    @Size(min = 10, max = 100)
     private String city;
+
+    @NotNull
+    @Size(min = 10, max = 100)
     private String state;
+
+    @NotNull
     private String cep;
+
+    @NotNull
+    @Size(min = 10, max = 100)
     private String country;
 
     @ManyToOne
