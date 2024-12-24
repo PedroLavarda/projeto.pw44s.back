@@ -16,6 +16,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import static org.springframework.security.web.util.matcher.AntPathRequestMatcher.antMatcher;
 
@@ -31,9 +33,25 @@ public class WebSecurity {
         this.authService = authService;
         this.authenticationEntryPoint = authenticationEntryPoint;
     }
+
+    @Bean
+    public WebMvcConfigurer corsConfigurer() {
+        return new WebMvcConfigurer() {
+            @Override
+            public void addCorsMappings(CorsRegistry registry) {
+                registry.addMapping("/**")
+                        .allowedOrigins("http://localhost:5173") // Allow your frontend
+                        .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS") // Add the HTTP methods you need
+                        .allowedHeaders("*")
+                        .allowedOrigins("http://localhost:5173/")
+                        .allowCredentials(true);
+            }
+        };
+    }
+
     @Bean
     @SneakyThrows
-    public SecurityFilterChain filterChain(final HttpSecurity http) {
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         AuthenticationManagerBuilder authenticationManagerBuilder =
                 http.getSharedObject(AuthenticationManagerBuilder.class);
 
@@ -42,15 +60,13 @@ public class WebSecurity {
 
         AuthenticationManager authenticationManager = authenticationManagerBuilder.build();
 
-        http.headers(headers ->
-                headers.frameOptions(HeadersConfigurer.FrameOptionsConfig::disable));
-
+        http.headers(headers -> headers.frameOptions().disable());
         http.csrf(AbstractHttpConfigurer::disable);
+
+        http.cors(); // Enable CORS handling
 
         http.exceptionHandling(exceptionHandling ->
                 exceptionHandling.authenticationEntryPoint(authenticationEntryPoint));
-
-        http.cors(AbstractHttpConfigurer::disable);
 
         http.authorizeHttpRequests(authorize ->
                 authorize
@@ -59,16 +75,14 @@ public class WebSecurity {
                         .requestMatchers(antMatcher("/error/**")).permitAll()
                         .requestMatchers(antMatcher(HttpMethod.POST, "/login/**")).permitAll()
                         .requestMatchers(antMatcher(HttpMethod.GET, "/products")).permitAll()
-
-
                         .anyRequest().authenticated());
 
         http.authenticationManager(authenticationManager)
                 .addFilter(new JWTAuthenticationFilter(authenticationManager, authService))
                 .addFilter(new JWTAuthorizationFilter(authenticationManager, authService))
-
                 .sessionManagement(sessionManagement ->
                         sessionManagement.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
+
         return http.build();
     }
 
