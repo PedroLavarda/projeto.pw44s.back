@@ -6,6 +6,8 @@ import br.edu.projeto.server.service.IAddressService;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class AddressServiceImpl extends CrudServiceImpl<Address, Long> implements IAddressService {
     private final AddressRepository addressRepository;
@@ -17,5 +19,10 @@ public class AddressServiceImpl extends CrudServiceImpl<Address, Long> implement
     @Override
     protected JpaRepository<Address, Long> getRepository() {
         return addressRepository;
+    }
+
+    @Override
+    public List<Address> getAddressesByUser(Long idUser) {
+        return addressRepository.getAddressesByUser(idUser);
     }
 }

@@ -13,5 +13,5 @@ public class AddressDTO {
     private String cep;
     private String country;
 
-    private User user;
+    private UserDTO user;
 }
