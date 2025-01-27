@@ -34,4 +34,16 @@ public class Product {
     @ManyToOne
     @JoinColumn(name = "idcategory", referencedColumnName = "id")
     private Category category;
+
+    @NotNull
+    @Column(name = "link_image")
+    private String linkImage;
+
+    @NotNull
+    @Column
+    private boolean promotion;
+
+    @NotNull
+    @Column(name = "promotion_value")
+    private Integer promotionValue;
 }

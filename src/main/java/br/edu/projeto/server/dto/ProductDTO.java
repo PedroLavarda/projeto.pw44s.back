@@ -18,4 +18,10 @@ public class ProductDTO {
     private Double price;
 
     private Category category;
+
+    private String linkImage;
+
+    private boolean promotion;
+
+    private Double promotionValue;
 }
