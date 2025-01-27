@@ -9,4 +9,7 @@ public class CategoryDTO {
 
     @NotNull
     private String name;
+
+    @NotNull
+    private String icon;
 }
