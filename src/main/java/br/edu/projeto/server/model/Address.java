@@ -19,22 +19,22 @@ public class Address {
     private Long id;
 
     @NotNull
-    @Size(min = 10, max = 100)
+    @Size(min = 2, max = 100)
     private String street;
 
     @NotNull
-    @Size(min = 10, max = 100)
+    @Size(min = 2, max = 100)
     private String city;
 
     @NotNull
-    @Size(min = 10, max = 100)
+    @Size(min = 2, max = 100)
     private String state;
 
     @NotNull
     private String cep;
 
     @NotNull
-    @Size(min = 10, max = 100)
+    @Size(min = 2, max = 100)
     private String country;
 
     @ManyToOne
