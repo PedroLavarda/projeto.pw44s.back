@@ -1,8 +1,12 @@
 package br.edu.projeto.server.dto;
 
 import br.edu.projeto.server.model.Category;
+import jakarta.persistence.Column;
+import jakarta.persistence.ElementCollection;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
+
+import java.util.List;
 
 @Data
 public class ProductDTO {
@@ -24,4 +28,12 @@ public class ProductDTO {
     private boolean promotion;
 
     private Double promotionValue;
+
+    private boolean inStock;
+
+    @NotNull
+    private String seller;
+
+    @NotNull
+    private List<String> imageUrls;
 }

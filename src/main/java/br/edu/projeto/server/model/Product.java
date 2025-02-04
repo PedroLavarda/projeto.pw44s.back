@@ -8,6 +8,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter @Setter
@@ -46,4 +48,16 @@ public class Product {
     @NotNull
     @Column(name = "promotion_value")
     private Integer promotionValue;
+
+    @NotNull
+    @Column(name = "in_stock")
+    private boolean inStock;
+
+    @NotNull
+    @Column(name = "seller")
+    private String seller;
+
+    @NotNull
+    @ElementCollection
+    private List<String> imageUrls;
 }
