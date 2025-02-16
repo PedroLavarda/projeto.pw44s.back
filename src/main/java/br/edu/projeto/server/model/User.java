@@ -37,12 +37,10 @@ public class User implements UserDetails {
     private String displayName;
 
     @NotNull
-    @Column(unique = true)
     @Size(min = 11, max = 11)
     private String cpf;
 
     @NotNull
-    @Column(unique = true)
     @Size(min = 9, max = 9)
     private String rg;
 
@@ -52,12 +50,11 @@ public class User implements UserDetails {
 
     @NotNull
     @Size(min = 6)
-    @Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).+$")
+    @Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).*$")
     private String password;
 
     @NotNull
     @Email(regexp = ".+[@].+[\\.].+")
-    @Column(unique = true)
     private String email;
 
     @Column(length = 50)
