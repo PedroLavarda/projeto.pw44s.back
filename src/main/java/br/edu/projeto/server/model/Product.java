@@ -59,5 +59,7 @@ public class Product {
 
     @NotNull
     @ElementCollection
+    @CollectionTable(name = "tb_product_images", joinColumns = @JoinColumn(name = "product_id"))
+    @Column(name = "image_url")
     private List<String> imageUrls;
 }
