@@ -27,4 +27,8 @@ public class UserServiceImpl extends CrudServiceImpl<User, Long> implements IUse
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         return this.userRepository.save(user);
     }
+
+    public User findUserByUsername(String username) {
+        return this.userRepository.findByUsername(username);
+    }
 }

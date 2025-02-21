@@ -2,7 +2,6 @@ package br.edu.projeto.server;
 
 import br.edu.projeto.server.model.User;
 import br.edu.projeto.server.repository.UserRepository;
-import br.edu.projeto.server.shared.GenericResponse;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +17,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @ActiveProfiles("test")
-public class UserControllerTest {
+public class UserControllerIntegrationTests {
     private static final String API_USERS = "/users";
     @Autowired
     private TestRestTemplate testRestTemplate;
