@@ -17,7 +17,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @ActiveProfiles("test")
-public class UserControllerIntegrationTests {
+public class UserControllerTests {
     private static final String API_USERS = "/users";
     @Autowired
     private TestRestTemplate testRestTemplate;

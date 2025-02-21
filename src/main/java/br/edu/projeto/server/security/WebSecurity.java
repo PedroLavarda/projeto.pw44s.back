@@ -74,8 +74,8 @@ public class WebSecurity {
                         .requestMatchers(antMatcher(HttpMethod.POST, "/users/**")).permitAll()
                         .requestMatchers(antMatcher("/error/**")).permitAll()
                         .requestMatchers(antMatcher(HttpMethod.POST, "/login/**")).permitAll()
-                        .requestMatchers(antMatcher(HttpMethod.GET, "/products/**")).permitAll()
-                        .requestMatchers(antMatcher(HttpMethod.GET, "/categories/**")).permitAll()
+                        .requestMatchers(antMatcher("/products/**")).permitAll()
+                        .requestMatchers(antMatcher("/categories/**")).permitAll()
                         .anyRequest().authenticated());
 
         http.authenticationManager(authenticationManager)
